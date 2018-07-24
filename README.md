@@ -1,4 +1,6 @@
-# Node.js Checker
+# Gimme new node, a Node.js local version updater
+
+![img](./img/toaster.png)
 
 Every time you log in, Windows will start a background process to check whether a new version of Node.js has been published. If there is a version newer than the one installed on your machine, it will display a notification with a small description where it shows the latest tag version from the official Node.js [GitHub](https://github.com/nodejs/node) repository.
 
@@ -9,7 +11,7 @@ Since there is no auto updater on Windows (not that I know of) I had to create t
 # Install
 
 ```bash
-npm i -g node-checker
+npm i -g gimme-new-node
 ```
 
 # Contribute
