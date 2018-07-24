@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "description": "Check if there is a newer version of Node.js than the one that is installed on the machine.",
   "main": "index.js",
-  "scripts": {
-    "start": "node index"
-  },
   "author": "Vladimir Jovanović",
   "license": "MIT",
   "dependencies": {
