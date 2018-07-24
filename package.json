@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/VladimirDev93/node-checker"
+    "url": "https://github.com/VladimirDev93/gimme-new-node"
   },
   "bugs": {
-    "url": "https://github.com/VladimirDev93/node-checker/issues"
+    "url": "https://github.com/VladimirDev93/gimme-new-node/issues"
   },
   "license": "MIT",
   "dependencies": {
