@@ -1,7 +1,7 @@
 {
   "name": "node-checker",
   "productName": "Node.js Checker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Check if there is a newer version of Node.js than the one that is installed on the machine.",
   "main": "index.js",
   "author": "Vladimir Jovanović",
