@@ -5,6 +5,13 @@
   "description": "Check if there is a newer version of Node.js than the one that is installed on the machine.",
   "main": "index.js",
   "author": "Vladimir Jovanović",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VladimirDev93/node-checker"
+  },
+  "bugs": {
+    "url": "https://github.com/VladimirDev93/node-checker/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "auto-launch": "^5.0.5",
