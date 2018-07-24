@@ -1,4 +1,4 @@
-# Node.js Checker
+# Gimme new node, a Node.js local version updater
 
 ![img](./img/toaster.png)
 
@@ -11,7 +11,7 @@ Since there is no auto updater on Windows (not that I know of) I had to create t
 # Install
 
 ```bash
-npm i -g node-checker
+npm i -g gimme-new-node
 ```
 
 # Contribute
