@@ -1,5 +1,5 @@
-const WindowsToaster = require('node-notifier').WindowsToaster,
-    opn = require('opn');
+import { WindowsToaster } from 'node-notifier';
+import opn from 'opn';
 
 // Create notification
 /**
@@ -25,8 +25,6 @@ var Notify = latest => {
     notifier.on('click', () => {
         opn(`https://nodejs.org/dist/${latest}/node-${latest}-${process.arch}.msi`);
     });
-
-    return this;
 };
 
-module.exports = Notify;
+export default Notify;
