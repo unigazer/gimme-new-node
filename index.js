@@ -1,31 +1,30 @@
 // Imports
-const fetch = require('node-fetch'),
-    Notify = require('./components/notify');
+import fetch from 'node-fetch';
+import Notify from './components/notify';
 
 // Create a start up entry
-require('./components/startup');
+import './components/startup';
 
 // Get the latest version
 (async () => {
     try {
         // Get the data
-        let res = await fetch('https://api.github.com/repos/nodejs/node/releases/latest', {
+        let res = await fetch('https://api.github.com/repos/nodejs/node/tags', {
             headers: {
-                'User-Agent': 'VladimirDev93',
                 'Content-Type': 'application/json'
             }
         });
         // Put the data
         let data = await res.json();
         // Get the latest version by tag
-        let latest = data.tag_name;
+        let latest = data[1].name;
         // Current Node.js version on the machine
         let current = process.version;
-
+        let strtonumLatest = latest.substr(1);
+        let strtonumCurrent = current.substr(1);
         // Show the notificaion
-        if (latest > current)
+        if (parseFloat(strtonumLatest) > parseFloat(strtonumCurrent))
             Notify(latest);
-
     } catch (error) {
         console.error(error);
     }
