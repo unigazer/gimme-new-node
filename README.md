@@ -1,4 +1,4 @@
-# Gimme new node, a Node.js local version updater
+# Node.js local version updater
 
 ![img](./img/toaster.png)
 
