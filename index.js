@@ -1,9 +1,9 @@
 // Imports
-import fetch from 'node-fetch';
-import Notify from './components/notify';
+const fetch = require('node-fetch');
+const notify = require('./components/notify');
 
 // Create a start up entry
-import './components/startup';
+require('./components/startup');
 
 // Get the latest version
 (async () => {
@@ -14,18 +14,23 @@ import './components/startup';
                 'Content-Type': 'application/json'
             }
         });
+
         // Put the data
         let data = await res.json();
+
         // Get the latest version by tag
         let latest = data[1].name;
+
         // Current Node.js version on the machine
         let current = process.version;
         let strtonumLatest = latest.substr(1);
         let strtonumCurrent = current.substr(1);
+
         // Show the notificaion
-        if (parseFloat(strtonumLatest) > parseFloat(strtonumCurrent))
-            Notify(latest);
+        if (parseFloat(strtonumLatest) > parseFloat(strtonumCurrent)) {
+            notify(latest);
+        }
     } catch (error) {
-        console.error(error);
+        throw new Error(error);
     }
 })();

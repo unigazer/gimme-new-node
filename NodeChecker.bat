@@ -1,1 +1,1 @@
-node -r esm index
+node index

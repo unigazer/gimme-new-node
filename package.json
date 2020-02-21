@@ -6,15 +6,15 @@
   "main": "index.js",
   "author": "Vladimir Jovanović",
   "scripts": {
-    "start": "node -r esm index",
-    "postinstall": "node -r esm index"
+    "start": "node index",
+    "postinstall": "node index"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/VladimirDev93/gimme-new-node"
+    "url": "https://github.com/whyseman/gimme-new-node"
   },
   "bugs": {
-    "url": "https://github.com/VladimirDev93/gimme-new-node/issues"
+    "url": "https://github.com/whyseman/gimme-new-node/issues"
   },
   "license": "MIT",
   "dependencies": {
@@ -22,6 +22,6 @@
     "esm": "^3.2.25",
     "node-fetch": "^2.6.0",
     "node-notifier": "^6.0.0",
-    "opn": "^6.0.0"
+    "open": "^7.0.2"
   }
 }
