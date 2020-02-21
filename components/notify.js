@@ -1,5 +1,5 @@
-import { WindowsToaster } from 'node-notifier';
-import opn from 'opn';
+const WindowsToaster = require('node-notifier').WindowsToaster;
+const open = require('open');
 
 // Create notification
 /**
@@ -8,7 +8,7 @@ import opn from 'opn';
  * This only shows the notification if there is a version greater than
  * the one that is installed on your machine.
  */
-var Notify = latest => {
+const notify = (latest) => {
     let notifier = new WindowsToaster({
         withFallback: true
     });
@@ -17,14 +17,17 @@ var Notify = latest => {
         title: 'New Node.js version is available',
         message: `Version tag: ${latest}\nClick on the notification to download`,
         icon: './icons/app.png',
-        wait: true
+        wait: true,
+        appID: 'Gimme new node'
     }, (err, res) => {
-        if (err) console.error(err);
+        if (err) {
+            console.error(err);
+        }
     });
 
-    notifier.on('click', () => {
-        opn(`https://nodejs.org/dist/${latest}/node-${latest}-${process.arch}.msi`);
+    notifier.on('click', async () => {
+        await open(`https://nodejs.org/dist/${latest}/node-${latest}-${process.arch}.msi`);
     });
 };
 
-export default Notify;
+module.exports = notify;
