@@ -18,15 +18,14 @@ const notify = (latest) => {
         message: `Version tag: ${latest}\nClick on the notification to download`,
         icon: './icons/app.png',
         wait: true,
-        appID: 'Gimme new node'
-    }, (err, res) => {
-        if (err) {
-            console.error(err);
+    }, (error, res) => {
+        if (error) {
+            throw new Error(error);
         }
     });
 
-    notifier.on('click', async () => {
-        await open(`https://nodejs.org/dist/${latest}/node-${latest}-${process.arch}.msi`);
+    notifier.on('click', () => {
+        open(`https://nodejs.org/dist/${latest}/node-${latest}-${process.arch}.msi`);
     });
 };
 

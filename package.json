@@ -7,7 +7,7 @@
   "author": "Vladimir Jovanović",
   "scripts": {
     "start": "node index",
-    "postinstall": "node index"
+    "postinstall": "node pm2"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "auto-launch": "^5.0.5",
-    "node-fetch": "^2.6.1",
-    "node-notifier": "^8.0.0",
-    "open": "^7.3.0"
+    "got": "^11.8.1",
+    "node-notifier": "^9.0.0",
+    "open": "^7.3.1",
+    "pm2": "^4.5.1"
   }
 }

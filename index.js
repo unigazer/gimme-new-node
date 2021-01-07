@@ -1,35 +1,24 @@
 // Imports
-const fetch = require('node-fetch');
+const got = require('got');
 const notify = require('./components/notify');
-
-// Create a start up entry
-require('./components/startup');
 
 // Get the latest version
 (async () => {
     try {
         // Get the data
-        let res = await fetch('https://api.github.com/repos/nodejs/node/tags', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Put the data
-        let data = await res.json();
+        const res = await got('https://gimme-new-node-api.vercel.app/api/query').json();
 
         // Get the latest version by tag
-        let latest = data[1].name;
+        const [{ tag }] = res.filter(({ tag }) => tag.name.includes(process.version.slice(1,3)));
 
         // Current Node.js version on the machine
-        let current = process.version;
-        let strtonumLatest = latest.substr(1);
-        let strtonumCurrent = current.substr(1);
+        const current_ver = process.version;
 
         // Show the notificaion
-        if (parseFloat(strtonumLatest) > parseFloat(strtonumCurrent)) {
-            notify(latest);
+        if (current_ver < tag.name ) {
+            notify(tag.name);
         }
+
     } catch (error) {
         throw new Error(error);
     }
