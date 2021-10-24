@@ -2,7 +2,7 @@
   "name": "gimme-new-node",
   "productName": "Gimme new node",
   "type": "module",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Check if there is a newer version of Node.js than the one that is installed on the machine.",
   "main": "index.js",
   "author": "Vladimir Jovanović",
