@@ -1,24 +1,30 @@
 // Imports
-const got = require('got');
-const notify = require('./components/notify');
+import got from 'got';
+import notify from './components/notify.js';
 
 // Get the latest version
 (async () => {
     try {
         // Get the data
         const res = await got('https://gimme-new-node-api.vercel.app/api/query').json();
+        const localVersion = process.version.split('.').join('').substring(1);
 
-        // Get the latest version by tag
-        const [{ tag }] = res.filter(({ tag }) => tag.name.includes(process.version.slice(1,3)));
-
-        // Current Node.js version on the machine
-        const current_ver = process.version;
-
-        // Show the notificaion
-        if (current_ver < tag.name ) {
-            notify(tag.name);
+        // If the local version is LTS
+        if (process.release?.lts) {
+            const versions = res.filter(({ tagName, name }) => {
+                return name.includes('LTS') && Number(tagName.split('.').join('').substring(1)) > Number(localVersion);
+            });
+            if (versions?.[0]?.tagName) {
+                notify(versions[0].tagName, 'LTS');
+            }
+        } else {
+            const versions = res.filter(({ isLatest, tagName }) => {
+                return isLatest && Number(tagName.split('.').join('').substring(1)) > Number(localVersion);
+            });
+            if (versions?.[0]?.tagName) {
+                notify(versions[0].tagName);
+            }
         }
-
     } catch (error) {
         throw new Error(error);
     }

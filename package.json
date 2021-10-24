@@ -1,26 +1,36 @@
 {
   "name": "gimme-new-node",
   "productName": "Gimme new node",
+  "type": "module",
   "version": "2.0.1",
   "description": "Check if there is a newer version of Node.js than the one that is installed on the machine.",
   "main": "index.js",
   "author": "Vladimir Jovanović",
   "scripts": {
     "start": "node index",
-    "postinstall": "node pm2"
+    "postinstall": "node startup"
   },
+  "engines": {
+    "node": ">= 14"
+  },
+  "os": [
+    "win32"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/whyseman/gimme-new-node"
+    "url": "https://github.com/unigazer/gimme-new-node"
   },
   "bugs": {
-    "url": "https://github.com/whyseman/gimme-new-node/issues"
+    "url": "https://github.com/unigazer/gimme-new-node/issues"
   },
   "license": "MIT",
   "dependencies": {
     "got": "^11.8.2",
-    "node-notifier": "^9.0.1",
-    "open": "^8.0.3",
-    "pm2": "^4.5.5"
+    "node-notifier": "^10.0.0",
+    "node-windows": "^1.0.0-beta.6",
+    "open": "^8.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0"
   }
 }

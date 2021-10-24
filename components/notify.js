@@ -1,5 +1,5 @@
-const WindowsToaster = require('node-notifier').WindowsToaster;
-const open = require('open');
+import { WindowsToaster } from 'node-notifier';
+import open from 'open';
 
 // Create notification
 /**
@@ -8,17 +8,18 @@ const open = require('open');
  * This only shows the notification if there is a version greater than
  * the one that is installed on your machine.
  */
-const notify = (latest) => {
+const notify = (latest, lts = '') => {
     let notifier = new WindowsToaster({
         withFallback: true
     });
 
     notifier.notify({
-        title: 'New Node.js version is available',
+        title: `New Node.js ${lts} version is available`,
         message: `Version tag: ${latest}\nClick on the notification to download`,
         icon: './icons/app.png',
         wait: true,
-    }, (error, res) => {
+        appID: 'gimme-new-node',
+    }, (error) => {
         if (error) {
             throw new Error(error);
         }
@@ -29,4 +30,4 @@ const notify = (latest) => {
     });
 };
 
-module.exports = notify;
+export default notify;
