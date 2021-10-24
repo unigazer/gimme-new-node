@@ -10,8 +10,17 @@ const svc = new Service({
 
 // Listen for the "install" event, which indicates the
 // process is available as a service.
-svc.on('install',function(){
+svc.on('install', function() {
     svc.start();
+    console.log('Service added successfully!');
+});
+
+svc.on('alreadyinstalled', function() {
+    console.log('Service is already installed.');
+});
+
+svc.on('error', function(err) {
+    console.error(`There was an error while trying to start the service. ${err}`);
 });
 
 svc.install();
